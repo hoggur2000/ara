@@ -65,6 +65,10 @@ ifeq ($(ideal_dispatcher), 1)
   ideal        = "_ideal"
 endif
 
+ifeq ($(vcd_dump), 1)
+  bender_defs += --define VCD_PATH=$(buildpath)/vcd/$(app).vcd
+endif
+
 # Check if the specified QuestaSim version exists
 ifeq (, $(shell which $(questa_cmd)))
   # Spaces are needed for indentation here!
