@@ -7,6 +7,7 @@
   asm volatile(                                                                \
       "csrs mstatus, %[bits];" ::[bits] "r"(0x00000600 & (0x00000600 >> 1)))
 
+extern int64_t event_trigger;
 extern int64_t timer;
 
 // Return the current value of the cycle counter
