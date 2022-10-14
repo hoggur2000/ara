@@ -61,9 +61,10 @@ module simd_mul import ara_pkg::*; import rvv_pkg::*; #(
   logic         [NumPipeRegs:0] stage_ready;
 
   // Input stage: First element of pipeline is taken from inputs
-  assign opa_d[0]   = operand_a_i;
-  assign opb_d[0]   = operand_b_i;
-  assign opc_d[0]   = operand_c_i;
+  // Mask the inputs for energy efficiency reasons
+  assign opa_d[0]   = operand_a_i & {$bits(operand_a_i){valid_i}};
+  assign opb_d[0]   = operand_b_i & {$bits(operand_b_i){valid_i}};
+  assign opc_d[0]   = operand_c_i & {$bits(operand_c_i){valid_i}};
   assign op_d[0]    = op_i;
   assign mask_d[0]  = mask_i;
   assign valid_d[0] = valid_i;
