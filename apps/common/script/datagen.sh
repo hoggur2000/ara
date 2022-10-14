@@ -22,7 +22,13 @@
 # Extract the name of the application
 app=$1
 
-if [[ $1 == *"conv"* ]]
+if [[ $1 == *"matmul"* ]]
+then
+  # matmul need args to be passed along
+  args="${@:2}"
+  # Use default values if args is not set
+  [ -z "$args" ] && args="128 128 128"
+elif [[ $1 == *"conv"* ]]
 then
   # Convolutions need args to be passed along
   args="${@:2}"
