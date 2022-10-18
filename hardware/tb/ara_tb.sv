@@ -192,7 +192,7 @@ module ara_tb;
   initial begin
     @(start_dump_event);
     $dumpfile(vcd_path);
-    $dumpvars(0, dut.i_ara_soc.i_system_gate);
+    $dumpvars(0, dut.i_ara_soc.i_system);
     $dumpon;
 
     #1 $display("[TB - VCD] DUMPING...\n");
