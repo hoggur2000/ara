@@ -105,6 +105,7 @@ module ara_soc import axi_pkg::*; import ara_pkg::*; #(
   // Buses
   system_req_t  system_axi_req_spill;
   system_resp_t system_axi_resp_spill;
+  system_resp_t system_axi_resp_spill_del;
   system_req_t  system_axi_req;
   system_resp_t system_axi_resp;
 
@@ -481,10 +482,10 @@ module ara_soc import axi_pkg::*; import ara_pkg::*; #(
     .scan_data_i  (1'b0                 ),
     .scan_data_o  (/* Unconnected */    ),
     .axi_req_o    (system_axi_req_spill ),
-    .axi_resp_i   (system_axi_resp_spill)
+    .axi_resp_i   (system_axi_resp_spill_del)
   );
 
-  //assign #200ps system_axi_resp_spill_del = system_axi_resp_spill;
+  assign #200ps system_axi_resp_spill_del = system_axi_resp_spill;
 
   axi_cut #(
     .ar_chan_t   (system_ar_chan_t     ),
