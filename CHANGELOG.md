@@ -72,6 +72,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - Plot jacobi2d performance
  - Plot dropout performance
  - Add FFT benchmark and print its performance
+ - Add DWT benchmark and print its performance
 
 ### Changed
 
