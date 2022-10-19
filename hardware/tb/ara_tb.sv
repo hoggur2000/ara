@@ -29,7 +29,7 @@ module ara_tb;
   localparam NrLanes = 0;
   `endif
 
-  localparam ClockPeriod = 2ns;
+  localparam ClockPeriod = 1ns;
 
   localparam AxiAddrWidth      = 64;
   localparam AxiWideDataWidth  = 64 * NrLanes / 2;
