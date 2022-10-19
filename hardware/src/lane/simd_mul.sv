@@ -65,8 +65,8 @@ module simd_mul import ara_pkg::*; import rvv_pkg::*; #(
   assign opa_d[0]   = operand_a_i & {$bits(operand_a_i){valid_i}};
   assign opb_d[0]   = operand_b_i & {$bits(operand_b_i){valid_i}};
   assign opc_d[0]   = operand_c_i & {$bits(operand_c_i){valid_i}};
-  assign op_d[0]    = op_i;
-  assign mask_d[0]  = mask_i;
+  assign op_d[0]    = op_i        & {$bits(       op_i){valid_i}};
+  assign mask_d[0]  = mask_i      & {$bits(     mask_i){valid_i}};
   assign valid_d[0] = valid_i;
 
   // Generate the pipeline stages in case they are needed
