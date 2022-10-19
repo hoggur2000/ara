@@ -70,7 +70,8 @@ ifeq ($(ideal_dispatcher), 1)
 endif
 
 ifeq ($(vcd_dump), 1)
-  bender_defs += --define VCD_DUMP=1 --define VCD_PATH=$(buildpath)/vcd/$(app).vcd
+  vcd_path    ?= ../vcd/$(app).vcd
+  bender_defs += --define VCD_DUMP=1 --define VCD_PATH=$(vcd_path)
 endif
 
 # Check if the specified QuestaSim version exists
