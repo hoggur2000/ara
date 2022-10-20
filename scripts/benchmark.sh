@@ -104,7 +104,7 @@ conv2d() {
         make -C hardware/ simv app=benchmarks > $tempfile || exit
         # Extract the performance
         cles=$(cat $tempfile | grep "\[cycles\]" | cut -d: -f2)
-        ./scripts/performance.py $kernel "$size $filter" $cycles >> ${kernel}_${nr_lanes}.benchmark
+        ./scripts/performance.py $kernel "$msize $fsize" $cycles >> ${kernel}_${nr_lanes}.benchmark
 
         if [ "$ci" == 0 ]; then
           # System with ideal dispatcher
@@ -114,7 +114,7 @@ conv2d() {
           make -C hardware/ -B simc app=benchmarks ideal_dispatcher=1 > $tempfile || exit
           # Extract the performance
           cycles=$(cat $tempfile | grep "\[cycles\]" | cut -d: -f2)
-          ./scripts/performance.py $kernel "$size $filter" $cycles >> ${kernel}_${nr_lanes}_ideal.benchmark
+          ./scripts/performance.py $kernel "$msize $fsize" $cycles >> ${kernel}_${nr_lanes}_ideal.benchmark
         fi
       done
     done
@@ -153,7 +153,7 @@ conv3d() {
         make -C hardware/ simv app=benchmarks > $tempfile || exit
         # Extract the performance
         cycles=$(cat $tempfile | grep "\[cycles\]" | cut -d: -f2)
-        ./scripts/performance.py $kernel "$size $filter" $cycles >> ${kernel}_${nr_lanes}.benchmark
+        ./scripts/performance.py $kernel "$msize $fsize" $cycles >> ${kernel}_${nr_lanes}.benchmark
 
         if [ "$ci" == 0 ]; then
           # System with ideal dispatcher
@@ -163,7 +163,7 @@ conv3d() {
           make -C hardware/ -B simc app=benchmarks ideal_dispatcher=1 > $tempfile || exit
           # Extract the performance
           cycles=$(cat $tempfile | grep "\[cycles\]" | cut -d: -f2)
-          ./scripts/performance.py $kernel "$size $filter" $cycles >> ${kernel}_${nr_lanes}_ideal.benchmark
+          ./scripts/performance.py $kernel "$msize $fsize" $cycles >> ${kernel}_${nr_lanes}_ideal.benchmark
         fi
       done
     done
